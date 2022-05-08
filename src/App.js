@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class App extends React.Component {
+  state = {
+    counter: 0
+  }
+
+    toFour = () => {
+    this.setState({counter: this.state.counter=4});
+  }
+    increment = () => {
+    this.setState({counter: this.state.counter+1});
+  }
+    down = () => {
+    this.setState({counter: this.state.counter-1});
+  }
+    clear = () => {
+    this.setState({counter: this.state.counter=0});
+  }
+
+  render() {
+    return <div className = "wrap">
+        <h1>Counter</h1>
+        <input type="text" defaultValue={this.state.counter}/>
+        <button onClick={this.toFour}>4</button>
+        <button onClick={this.increment}>+1</button>
+        <button onClick={this.down}>-1</button>
+        <button onClick={this.clear}>Clear</button>
+    </div>;
+  }
 }
+
+const el = <App />; 
+ReactDOM.render(
+  el, 
+  document.getElementById('root')
+);
 
 export default App;
