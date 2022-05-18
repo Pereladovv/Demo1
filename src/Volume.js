@@ -17,6 +17,7 @@ class Volume extends React.Component {
     
     render() {
         return  <div className = "wrap">
+                    
                     <h1>Volume</h1>
                     <span>Длина в м:</span>
                     <input type="number" defaultValue={this.state.length} onChange={this.сhangeLength}/> 
@@ -35,22 +36,18 @@ class Volume extends React.Component {
                         {this.getPerimeter()} м
                     </div>
                     <div className="names">
-                    <Result perimeter={this.getPerimeter()} volume={this.getVolume()} />   
+                        <Result perimeter={this.getPerimeter()} volume={this.getVolume()} />   
                     </div>
 
                     <Mass volume={this.getVolume()}/>
 
-{/*                     <div className = "names">
-                        <span>Масса: </span>
-                        {this.getMass()} кг/м³
-                    </div> */}
+                <div className = "names">
+                        <span>Масса (из mass.js): </span>
+                        вывести кг/м³
+                    </div>
                 </div>;
       }
   
-    getMass = () => {
-        return parseInt(this.getVolume()) * 1000 // вызов метода расчёта массы (плотность воды = 1000 кг/м³)
-    }  
-
     сhangeLength = (event) => {
         this.setState({length: event.target.value});
     }

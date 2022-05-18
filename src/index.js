@@ -7,9 +7,9 @@ import Volume from './Volume';
 
 ReactDOM.render(
   <React.StrictMode>
-{/*     <App/> */}
     <Volume/>
-{/*     <Fio/> */}
+    <App/>
+    <Fio/>
 
   </React.StrictMode>,
   document.getElementById('root')

@@ -26,7 +26,7 @@ class App extends React.Component {
   render() {
     return <div className = "wrap">
         <h1>Counter</h1>
-        <input type="text" defaultValue={this.state.counter}/>
+        <input type="text" readOnly value={this.state.counter}/>
         <button onClick={this.toFour}>4</button>
         <button onClick={this.increment}>+1</button>
         <button onClick={this.down}>-1</button>
