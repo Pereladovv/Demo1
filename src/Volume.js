@@ -9,10 +9,11 @@ import Mass from './Mass';
 
 class Volume extends React.Component {
   state = {
-    length: 0, // Длина 
-    width: 0,  // Ширина 
-    height: 0, // Высота
-    volume: 0
+    length: 10, // Длина 
+    width: 10,  // Ширина 
+    height: 10, // Высота
+    volume: 0,
+    mass: 0
     }
     
     render() {
@@ -26,29 +27,49 @@ class Volume extends React.Component {
                     <span>Высота в м:</span>
                     <input type="number" defaultValue={this.state.height} onChange={this.сhangeHeight}/>
 
-                    <div className = "names">
+                    <div className="names">
                         <span>Объём: </span>
-                        {this.getVolume()} м³
+                        {this.getVolume()} м³ {/* Вывод объёма */}
                     </div>
 
-                    <div className = "names">
+                    <div className="names">
                         <span>Периметр: </span>
-                        {this.getPerimeter()} м
+                        {this.getPerimeter()} м  {/* Вывод периметра */}
                     </div>
+                    
                     <div className="names">
                         <Result perimeter={this.getPerimeter()} volume={this.getVolume()} />   
                     </div>
 
-                    <Mass volume={this.getVolume()}/>
+                    <Mass volume={this.getVolume()} mass={this.updateData}/> {/* В Mass.js передаём props "volume" из функции "getVolume" */}
 
-                <div className = "names">
+                    <div className="names">
+                        <span>Масса: </span>
+                        {this.state.mass} м  {/* Возврат массы из ребенка */}
+                    </div>
+
+
+
+
+{/*                     <div className = "work">
                         <span>Масса (из mass.js): </span>
                         вывести кг/м³
-                    </div>
+
+
+                    </div> */}
+
                 </div>;
       }
-  
-    сhangeLength = (event) => {
+
+    /* Создаём в родителе функцию updateData. 
+    У неё есть входной параметр value, этот параметр мы присваиваем в стейт нашего компонента, с помощью функции setState */
+    updateData = (value) => {
+/*         this.setState({ volume: value }) */
+    this.setState({mass: value});    
+    }
+   
+
+      сhangeLength = (event) => {
         this.setState({length: event.target.value});
     }
     сhangeWidth = (event) => {
@@ -58,22 +79,15 @@ class Volume extends React.Component {
         this.setState({height: event.target.value});
     }
     getVolume = () => {
-        return parseInt(this.state.length) * parseInt(this.state.width) * parseInt(this.state.height) // вызов метода расчёта объёма
+        let volume = parseInt(this.state.length) * parseInt(this.state.width) * parseInt(this.state.height);
+        /* Здесь перед return надо отправить данные в REDUX */
+        return volume // вызов метода расчёта объёма
     }
     getPerimeter = () => {
         return parseInt(this.state.length) * parseInt(this.state.width)// вызов метода расчёта периметра
     }
 
 
-    // Если объем оказывается больше 1000, то выводить периметр. Иначе выводить объём. (сложн)
-
-/*     getResult = () => {
-        if (this.getVolume() > 1000) {
-            return this.getPerimeter()
-        } else {
-            return this.getVolume()
-        }
-    } */
 }
 
 const el = <Volume />; 

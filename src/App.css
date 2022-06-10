@@ -12,13 +12,11 @@ h1 {
     text-align: center;
 }
 
-body {
-    background-color: #fefcf2;
 
-}
 
 .wrap {
-    width: 300px;
+    width: 500px;
+    background-color: #fefcf2;
     margin: 10px auto;
     border: 1px double #caddc2;
 
@@ -44,7 +42,7 @@ button {
 }
 
 .names {
-    border: 1px double #bdd3db;
+
     min-height: 18px;
     padding: 4px;
     margin: 4px;
@@ -58,7 +56,16 @@ span {
     
 }
 
+.work
+{
+    background-color: #e3ffe6;
 
+    min-height: 18px;
+    padding: 4px;
+    margin: 4px;
+    border: 1px solid #9f6ad1;
+    border-radius: 5px;
+}
 
 
 
